@@ -3,7 +3,7 @@ import os
 import streamlit as st
 import requests
 from pathlib import Path
-API_URL = os.getenv("API_URL","https://project-hdg3.onrender.com/predict")
+API_URL = os.getenv("API_URL","https://project-car-g83q.onrender.com/predict")
 
 #페이지설정
 st.set_page_config(
