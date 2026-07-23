@@ -14,3 +14,5 @@ class CarInput(BaseModel):
 # 예측 결과
 class PredictionResponse(BaseModel):
     predicted_price: float
+    currency: str
+    analysis: str

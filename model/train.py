@@ -8,16 +8,21 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 
 df = pd.read_csv("../data/Used_Car_Price_Data.csv")
-# 데이터셋은 Lakh 단위 달러 단위로 변환
+#Lakh 단위 달러 단위로 변환
 LAKH_TO_USD = 1180
 df["Selling_Price"] = df["Selling_Price"] * LAKH_TO_USD
+
+# 영어 → 한글 변환
+df["Fuel_Type"] = df["Fuel_Type"].replace({"Petrol": "가솔린","Diesel": "디젤","CNG": "CNG"})
+df["Seller_Type"] = df["Seller_Type"].replace({"Dealer": "딜러","Individual": "개인"})
+df["Transmission"] = df["Transmission"].replace({"Manual": "수동","Automatic": "자동"})
+
+#결측치 제거 
+df.drop("Car_Name", axis=1, inplace=True)
 
 print(df.head())
 print(df.info())
 print(df.isnull().sum())
-
-#결측치 제거 
-df.drop("Car_Name", axis=1, inplace=True)
 
 #문자열 데이터를 숫자형으로 변환
 label_encoders = {}
