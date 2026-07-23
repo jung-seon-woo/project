@@ -1,8 +1,9 @@
 #사용자 사용 화면(UI)
+import os
 import streamlit as st
 import requests
 from pathlib import Path
-API_URL = "http://localhost:8000/predict"
+API_URL = os.getenv("API_URL","http://localhost:8000/predict")
 
 #페이지설정
 st.set_page_config(
